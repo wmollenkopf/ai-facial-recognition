@@ -17,6 +17,12 @@ const particlesOptions = {
 }
 
 class App extends Component {
+  constructor()  {
+    super();
+    this.state = {
+      imageUrl: ''
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -25,7 +31,7 @@ class App extends Component {
               />
         <div>Hello World</div>
         <FaceRecognition />
-        <ImageSubmissionForm />
+        <ImageSubmissionForm imageUrl={this.state.imageUrl} />
       </div>
     );
   }
