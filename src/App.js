@@ -20,8 +20,19 @@ class App extends Component {
   constructor()  {
     super();
     this.state = {
-      imageUrl: ''
+      input: '',
+      imageUrl: '',
+      filename: null,
+      imageData: null
     }
+  }
+  onInputChange = (event) => {
+    this.setState({input: event.target.value});
+  }
+
+  onButtonSubmit = () => {
+    this.setState({imageUrl: this.state.input});
+    console.log('click');
   }
   render() {
     return (
@@ -29,9 +40,8 @@ class App extends Component {
         <Particles className='particles'
                 params={particlesOptions}
               />
-        <div>Hello World</div>
-        <FaceRecognition />
-        <ImageSubmissionForm imageUrl={this.state.imageUrl} />
+        <ImageSubmissionForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+        <FaceRecognition imageUrl={this.state.imageUrl}/>
       </div>
     );
   }
