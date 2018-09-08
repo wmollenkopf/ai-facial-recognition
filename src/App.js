@@ -21,6 +21,7 @@ const particlesOptions = {
 
 const CLARIFAI_KEY = process.env.REACT_APP_CLARIFAI_KEY;
 
+
 const clarifaiApp = new Clarifai.App({
  apiKey: CLARIFAI_KEY
 });
@@ -40,7 +41,7 @@ class App extends Component {
     this.setState({input: event.target.value});
   }
   displayFaceArea = (box) => {
-    console.log({box});
+    console.log('boxis',box);
     this.setState({box: box});
   }
   onButtonSubmit = () => {
