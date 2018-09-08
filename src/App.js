@@ -34,7 +34,8 @@ class App extends Component {
       imageUrl: '',
       filename: null,
       imageData: null,
-      regions: {},
+      regions: null,
+      numOfFaces: null
     }
   }
   onInputChange = (event) => {
@@ -43,6 +44,7 @@ class App extends Component {
   displayFaceArea = (regions) => {
     console.log('regions are:',regions);
     this.setState({regions: regions});
+    this.setState({numOfFaces: regions.length});
   }
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
@@ -58,14 +60,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <p className='f2'>
-          {/*console.log(CLARIFAI_KEY)*/}
-        </p>
+      
         <Particles className='particles'
                 params={particlesOptions}
               />
+
         <ImageSubmissionForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-        <FaceRecognition imageUrl={this.state.imageUrl} regions={this.state.regions}/>
+        <FaceRecognition imageUrl={this.state.imageUrl} regions={this.state.regions} numOfFaces={this.state.numOfFaces} />
       </div>
     );
   }
