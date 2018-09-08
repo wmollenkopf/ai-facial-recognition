@@ -14,3 +14,6 @@ Run the following command from the root directory...
  * This will set up dependencies for the project.
 * `npm start`
  * This will run the server locally.
+
+# Notes
+* The command `git update-index --skip-worktree clarifai.env` has been used to help ensure that changes to the file won't be requested to be stored into the repository.
