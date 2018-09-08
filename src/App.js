@@ -34,15 +34,15 @@ class App extends Component {
       imageUrl: '',
       filename: null,
       imageData: null,
-      boundingBoxes: {},
+      regions: {},
     }
   }
   onInputChange = (event) => {
     this.setState({input: event.target.value});
   }
-  displayFaceArea = (boundingBoxes) => {
-    console.log('boundingBoxes are:',boundingBoxes);
-    this.setState({boundingBoxes: boundingBoxes});
+  displayFaceArea = (regions) => {
+    console.log('regions are:',regions);
+    this.setState({regions: regions});
   }
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
@@ -50,30 +50,11 @@ class App extends Component {
     clarifaiApp.models.predict(
       Clarifai.FACE_DETECT_MODEL,
       this.state.input)
-      .then(response => this.displayFaceArea(this.createBoundingBoxes(response.outputs[0].data.regions)))
+      .then(response => this.displayFaceArea(response.outputs[0].data.regions))
       .catch(err => console.log(err));
       //const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box
   }
-  calcFaceLocation = (clarifaiFace) => {
-    const image = document.getElementById('inputimage');
-    const width = Number(image.width);
-    const height = Number(image.height);
-    console.log('output',clarifaiFace);
-    return {
-      leftCol: clarifaiFace.left_col * width, // width of boxed area
-      topRow: clarifaiFace.top_row * height, // height of boxed area
-      rightCol: width - (clarifaiFace.right_col * width),
-      bottomRow: height - (clarifaiFace.bottom_row * height)
-    }
-  }
   
-  createBoundingBox = (region) => {
-    let box = this.calcFaceLocation(data.region_info.bounding_box);
-    return (<div className='bounding-box' style={{top: box.topRow, right: box.rightCol, bottom: box.bottomRow, left: box.leftCol}}></div>);
-  }
-  createBoundingBoxes = (regions) => {
-    return boxes.map(this.createBoundingBox);
-  }
   render() {
     return (
       <div className="App">
@@ -84,7 +65,7 @@ class App extends Component {
                 params={particlesOptions}
               />
         <ImageSubmissionForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-        <FaceRecognition imageUrl={this.state.imageUrl} boundingBoxes={this.state.boundingBoxes}/>
+        <FaceRecognition imageUrl={this.state.imageUrl} regions={this.state.regions}/>
       </div>
     );
   }
