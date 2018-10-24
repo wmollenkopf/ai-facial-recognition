@@ -36,7 +36,7 @@ const FaceRecognition = ({imageUrl, regions, numOfFaces}) =>
 		if(numOfFaces > 1) {
 			return numOfFaces + ' faces were found.';
 		}
-		else if(numOfFaces == 1) {
+		else if(numOfFaces === 1) {
 			return '1 face was found.';
 		}
 		else {
