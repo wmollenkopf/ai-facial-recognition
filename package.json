@@ -5,6 +5,7 @@
   "homepage": "https://wmollenkopf.github.io/ai-facial-recognition",
   "dependencies": {
     "clarifai": "^2.8.1",
+    "gh-pages": "^2.0.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-particles-js": "^2.3.0",
