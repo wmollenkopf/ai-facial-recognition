@@ -56,14 +56,12 @@ class App extends Component {
       .catch(err => console.log(err));
       //const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box
   }
-  
+  //<Particles className='particles' params={particlesOptions} />
   render() {
     return (
       <div className="App">
       
-        <Particles className='particles'
-                params={particlesOptions}
-              />
+        
 
         <ImageSubmissionForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
         <FaceRecognition imageUrl={this.state.imageUrl} regions={this.state.regions} numOfFaces={this.state.numOfFaces} />
