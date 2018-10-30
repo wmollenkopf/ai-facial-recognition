@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/wmollenkopf/ai-facial-recognition.svg?branch=master)](https://travis-ci.com/wmollenkopf/ai-facial-recognition)
 # ai-facial-recognition
 This project is for me to attempt to use a ReactJS App with some machine learning thrown in in order to recognize faces.
 
@@ -12,8 +13,9 @@ Run the following command from the root directory...
 
 * `npm install`
   * This will set up dependencies for the project.
-* Create .env.development file (if using npm start)
-* Create .env.production file (if using npm build) 
+* Edit the .env.development file (if using npm start)
+* Edit the .env.production file (if using npm build) 
+* Edit the .env.test file (if using npm test) 
   * Note: Each .env file will need the Environment Variable of your Clarify API Key from here [https://clarify.io](https://clarify.io)
   * Example: REACT_APP_CLARIFAI_KEY=zzzaaabbbcccdddeee888fff44422200
 * `npm start`
